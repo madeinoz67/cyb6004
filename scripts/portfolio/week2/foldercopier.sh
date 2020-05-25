@@ -24,11 +24,12 @@ if [ -d "$srcFolder" ]; then
     echo "successfully copied $srcFolder to $dstFolder"
     echo
 
- else
-    # print an error
-    echo "I couldn't find the source folder...exiting..."
+else
+    # print an error
+    echo "I couldn't find the source folder...exiting..."
     exit 1
- fi
+fi
 
+# display tree and exit
 tree ../
 exit 0
