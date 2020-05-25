@@ -22,11 +22,11 @@ setfacl -d -m g::--x $folderName   # revoke all group rights
 setfacl -d -m o::--- $folderName   # revoke all others permissions
 
 # retrieve users password
-read -p "Please enter the password to save: " userPassword
+read -sp "Please enter the password to save: " userPassword
 echo
 
-# write the passsword hash to secret.txt
-echo $userPassword | sha256sum > "$folderName/secret.txt"
+# write the passsword hash to secret.txt -n prevents hash calc of new line
+echo -n $userPassword | sha256sum > "$folderName/secret.txt"
 
 echo "Password hash successfully written to $folderName/secret.txt"
 echo
