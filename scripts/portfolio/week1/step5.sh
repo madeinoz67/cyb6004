@@ -6,13 +6,17 @@
 #
 
 # set base directory 
-basedir=~/Documents/1_Masters-study/cyb6004/scripts/portfolio
+basedir=~/cyb6004/scripts/portfolio
 
 # count of directories
-weekssofar=$(find $basedir -type d -mindepth 1 | wc -l)
+
+weekssofar=$(find $basedir -mindepth 1 -type d | wc -l)
 
 #next number of week 
 weektoadd=$((weekssofar + 1))
 
 # add the new directory
 mkdir $basedir/week${weektoadd}
+
+# display tree
+tree $basedir
