@@ -25,7 +25,7 @@ setfacl -d -m o::--- $folderName   # revoke all others permissions
 read -p "Please enter the password to save: " userPassword
 echo
 
-# write the clear text passsword to secret.txt
+# write the passsword hash to secret.txt
 echo $userPassword | sha256sum > "$folderName/secret.txt"
 
 echo "Password hash successfully written to $folderName/secret.txt"
