@@ -1,6 +1,7 @@
 #!/bin/sh
 #
-# Script to add a new weekly directory to portfolio
+# Script for 1.5 as an example of a more complex script
+# the purpose is add a new weekly directory to portfolio
 # this counts the number of existing directories and then creates the next week number
 #
 
