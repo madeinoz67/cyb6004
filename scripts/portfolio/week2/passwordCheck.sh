@@ -7,8 +7,11 @@
 #   secrets file or folder doesnt exist exit 2
 
 # get directory from user
-read -p "Please enter the folder the password is stored in: " secretFolder
-echo
+#read -p "Please enter the folder the password is stored in: " secretFolder
+#echo
+
+#hardcode the password folder due to 2.5 menu requirements
+secretFolder=passwords/
 
 # check if secrets folder exists and exit if it doesnt
 if [ ! -d "$secretFolder" ]; then
