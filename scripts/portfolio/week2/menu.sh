@@ -4,7 +4,7 @@
 #  provides a menu around week2 scripts
 #
 
-#preven <CTRL> C from exiting program
+#prevent <CTRL> C from exiting program
 trap '' 2 
 
 #define constants 
@@ -23,7 +23,7 @@ if (( passwordCheckResult != passwordIsOK )); then
     exit 1
 fi
 
-# will continioulsy loop to redisplay menu until exit is selected
+# will continuously loop to redisplay menu until exit is selected
 while true; do
     # Display Menu Structure and get user input
     echo 
