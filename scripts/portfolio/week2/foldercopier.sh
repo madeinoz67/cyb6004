@@ -31,5 +31,5 @@ else
 fi
 
 # display tree and exit
-tree ../
+/bin/tree
 exit 0

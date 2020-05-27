@@ -10,7 +10,7 @@ basedir=~/cyb6004/scripts/portfolio
 read -p "Type the name of the folder you would like to create? " folderName
 
 # check if folder exists
-if [ -d "$basedir/$folderName" ]; then
+if [ -d "$folderName" ]; then
     echo
     echo "Directory already exists"
     echo
@@ -21,9 +21,9 @@ fi
 mkdir "$folderName"
 mv "$folderName" "$basedir"
 echo
-echo "$basedir/$foldername creation successful"
+echo "$foldername creation successful"
 echo
 
 #display tree
-tree $basedir
+tree
 exit 0
