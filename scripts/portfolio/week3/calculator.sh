@@ -24,40 +24,53 @@ PURPLE=`tput setaf 129`
 NORMAL=`tput sgr0`
 
 
-# Get numbers from user and Display Menu of operations
-echo -e "${GREY}-= Arithmetic Calculator =-${NORMAL}"
-echo
-echo "Enter two numbers: "
-read num1
-read num2
+while true; do
 
-echo 
-echo "Enter Operation :"
-echo "1) ${BLUE}Add numbers${NORMAL}" 
-echo "2) ${GREEN}Subtract numbers${NORMAL}" 
-echo "3) ${RED}Multiply numbers${NORMAL}" 
-echo "4) ${PURPLE}Divide numbers${NORMAL}" 
-read op
+    # Get numbers from user and Display Menu of operations
+    echo -e "${GREY}-= Arithmetic Calculator =-${NORMAL}"
+    echo
+    echo "Enter two numbers: "
+    read num1
+    read num2
 
-# Select the operation
-case $op in
-        1)
-            ans=$(echo "scale=2; $num1 + $num2;" | bc)
-            ;;
-        2)
-            ans=$(echo "scale=2; $num1 - $num2;" | bc)
-            ;;
-        3)
-            ans=$(echo "scale=2; $num1 * $num2;" | bc)
-            ;;
-        4)
-            ans=$(echo "scale=2; $num1 / $num2;" | bc)
-            ;;
-        *) echo "invalid option $REPLY";;
-esac
+    echo 
+    echo "Enter Operation :"
+    echo "1) ${BLUE}Add numbers${NORMAL}" 
+    echo "2) ${GREEN}Subtract numbers${NORMAL}" 
+    echo "3) ${RED}Multiply numbers${NORMAL}" 
+    echo "4) ${PURPLE}Divide numbers${NORMAL}" 
+    read op
 
-# display the answer
-echo "${GREY}The Answer is:${WHITE} $ans ${NORMAL}"
-echo
+    # Select the operation
+    case $op in
+            1)
+                ans="$num1 + $num2"
+                res=$(echo "scale=2; $num1 + $num2;" | bc)
+                ;;
+            2)
+                ans="$num1 - $num2"
+                res=$(echo "scale=2; $num1 - $num2;" | bc)
+                ;;
+            3)
+                ans="$num1 * $num2"
+                res=$(echo "scale=2; $num1 * $num2;" | bc)
+                ;;
+            4)
+                ans="$num1 / $num2"
+                res=$(echo "scale=2; $num1 / $num2;" | bc)
+                ;;
+            *) echo "invalid option $REPLY";;
+    esac
 
+    # display the answer
+    echo "${L_GREY}$ans = ${WHITE} $res ${NORMAL}"
+    echo
+
+    # exit or do again
+    echo -en "Press 'Q' to exit or any key to continue \t"
+    read input
+    if [ "$input" = "q" ] || [ "$input" = "Q" ]; then
+        break
+    fi
+done;
 
