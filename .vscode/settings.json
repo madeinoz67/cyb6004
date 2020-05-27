@@ -1,0 +1,10 @@
+{
+    "emmet.showSuggestionsAsSnippets": true,
+    "editor.tabCompletion": "on",
+    "cSpell.language": "en-GB",
+    "editor.snippetSuggestions": "top",
+    "cSpell.words": [
+        "mkdir",
+        "setfacl"
+    ]
+}
