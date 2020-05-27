@@ -23,9 +23,9 @@ WHITE=`tput setaf 15`
 PURPLE=`tput setaf 129`
 NORMAL=`tput sgr0`
 
-
 while true; do
-
+    clear
+    
     # Get numbers from user and Display Menu of operations
     echo -e "${GREY}-= Arithmetic Calculator =-${NORMAL}"
     echo
