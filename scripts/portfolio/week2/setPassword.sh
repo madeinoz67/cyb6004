@@ -14,10 +14,10 @@ if [ -d "$folderName" ]; then
 fi
  
 # Create the folder
-/bin/mkdir "$folderName"
+mkdir "$folderName"
 
 # set permissions on all created files to only allow user to read/write all other groups have no access
-$(setfacl -d -m u::rwx $folderName)   # set user to full rights
+setfacl -d -m u::rwx $folderName   # set user to full rights
 setfacl -d -m g::--x $folderName   # revoke all group rights
 setfacl -d -m o::--- $folderName   # revoke all others permissions
 
@@ -25,7 +25,7 @@ setfacl -d -m o::--- $folderName   # revoke all others permissions
 read -sp "Please enter the password to save: " userPassword
 echo
 
-# write the passsword hash to secret.txt -n prevents hash calc of new line
+# write the password hash to secret.txt -n prevents hash calc of new line
 echo -n $userPassword | /bin/sha256sum > "$folderName/secret.txt"
 
 echo "Password hash successfully written to $folderName/secret.txt"
