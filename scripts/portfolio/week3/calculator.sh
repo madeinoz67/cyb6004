@@ -24,14 +24,12 @@ PURPLE=`tput setaf 129`
 NORMAL=`tput sgr0`
 
 
-
-# Display Menu Structure and get user input
+# Get numbers from user and Display Menu of operations
 echo -e "${GREY}-= Arithmetic Calculator =-${NORMAL}"
 echo
 echo "Enter two numbers: "
 read num1
 read num2
-
 
 echo 
 echo "Enter Operation :"
