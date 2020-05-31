@@ -12,21 +12,20 @@ if [ -d "$folderName" ]; then
     echo Folder already exists exiting..
     exit 1
 fi
- 
+
 # Create the folder
 mkdir "$folderName"
-
-# set permissions on all created files to only allow user to read/write all other groups have no access
-setfacl -d -m u::rwx $folderName   # set user to full rights
-setfacl -d -m g::--x $folderName   # revoke all group rights
-setfacl -d -m o::--- $folderName   # revoke all others permissions
 
 # retrieve users password
 read -sp "Please enter the password to save: " userPassword
 echo
 
 # write the password hash to secret.txt -n prevents hash calc of new line
-echo -n $userPassword | /bin/sha256sum > "$folderName/secret.txt"
+echo -n $userPassword | sha256sum > "$folderName/secret.txt"
+
+# set permissions on all created files to only allow user to read/write all other groups have no access
+chmod -R 600 $folderName
+chmod 600 $folderName/secret.txt
 
 echo "Password hash successfully written to $folderName/secret.txt"
 echo

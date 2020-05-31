@@ -9,13 +9,13 @@
 # get directory from user
 #read -p "Please enter the folder the password is stored in: " secretFolder
 #echo
+basedir=../
+#hardcoded the password folder due to 2.5 menu requirements
+secretFolder=$basedir/week2/passwords/
 
-#hardcode the password folder due to 2.5 menu requirements
-secretFolder=passwords/
-
-# check if secrets folder exists and exit if it doesnt
+# check if secrets folder exists and exit if it doesn't
 if [ ! -d "$secretFolder" ]; then
-    echo "Sorry I can't find the secrets folder...exiting..."
+    echo "Sorry I can't find the secrets folder...please set the password using 'setPassword.sh'..."
     exit 2
 fi
 

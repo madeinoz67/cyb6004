@@ -4,6 +4,13 @@
 #   reads in file and directory names from a file and check if a file or directory
 clear
 
+# check if file is passed
+if [[ $# != 1 ]]; then
+    echo "no filename passed"
+    exit 1
+fi
+
+
 for line in $(cat $1);
 do
     # check if $line represents a directory
