@@ -15,9 +15,9 @@ This is a command line script that checks a file on [Virus Total](https://www.vi
 
 ## Exit codes ##
 
-0 - Normal exit, no malicious file found
-1 - Possible Malicious file found
-2 - requirements not installed
+0 - Normal exit, no malicious file found  
+1 - Possible Malicious file found  
+2 - requirements not installed  
 
 ## Requirements ##
 
