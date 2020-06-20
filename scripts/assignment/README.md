@@ -68,7 +68,7 @@ bats needs to be installed to perform the tests see https://github.com/bats-core
 8 tests, 0 failures
 ````
 
-### Debuging ###
+### Debugging ###
 
 By enable the debug flag `-d` when running the script will print out additional information helpful in troubleshooting a problem
 
@@ -78,6 +78,7 @@ It is important to note that when debug is enabled the tmp directory created wil
 
 1. The free API is limited to 4 requests per minute
 2. The free API is limited to a maximum of 1,000 requests per day
+3. Antivirus may pick up the eicar.com test files used in unit testing, these are false positives and can be excluded.  See https://www.eicar.org/?page_id=3950
 
 ## Project Directory ##
 
