@@ -91,12 +91,13 @@ It is important to note that when debug is enabled the tmp directory created wil
 ````
 .
 ├── README.md
+├── runtests.sh
 ├── tests
-│   ├── test_vtfc.bats
-│   └── testfiles
-│       ├── eicar.com
-│       ├── eicar.com.txt
-│       └── normal.txt
+│   ├── testfiles
+│   │   ├── eicar.com
+│   │   ├── eicar.com.txt
+│   │   └── normal.txt
+│   └── vtfc.bats
 ├── verbose.awk
 └── vtfc.sh
 ````
