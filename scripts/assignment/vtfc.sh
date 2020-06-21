@@ -59,7 +59,7 @@ getFileSha1() {
 #   as the key is the only config item being stored it just overwrites the file
 setApiKey() {
     echo "VT_APIKEY=$1" > $configFile
-    [[ $DEBUG ]] && echo -e "DEBUG: VT_APIKEY=$1 saved in $configFile\n"
+    [[ $DEBUG ]] && echo -e "DEBUG setApiKey(): VT_APIKEY=$1 saved in $configFile\n"
 }
 
 # script usage help
@@ -100,7 +100,7 @@ doSearch() {
 # clean-up housekeeping when exiting
 cleanup() {
     if [[ $DEBUG ]]; then
-        echo -e "DEBUG: $RED Scratch directory not removed! - Please remove manually using 'rm -rf $scratch' $RESET"
+        echo -e "DEBUG cleanup(): $RED Scratch directory not removed! - Please remove manually using 'rm -rf $scratch' $RESET"
     else
         rm -Rf $scratch                     # removes the scratch directory
     fi
@@ -149,29 +149,27 @@ shift $((OPTIND-1))
 [ -z "$ACTION" ] && { usage; exit 2; }  # no parameters passed so display the usage
 [ -z "$@" ] && { usage; exit 2; }       # no filename or APIKEY passed so display the usage
 
-# check if the config file containing the API key exists in user home directory
-if [ -f "$configFile" ]; then
-    . $configFile                       # load config
-
-    # check VT_APIKEY exists only if its not being set
-    if [[ $ACTION != setApiKey && -z "$VT_APIKEY" ]]; then
-        echo -e "\n $RED Please set the API KEY using the '-a' option $RESET\n"
-        usage 
-        exit 2
-    fi
-else
-    echo -e "\n Config File '$configFile' not found! \n Please set API KEY using the '-a' option \n"
-    usage
-    exit 2
-fi
-
-[[ $DEBUG ]] && echo -e "DEBUG: $YELLOW VT_APIKEY: $VT_APIKEY $RESET\n"
-
 scratch=$(mktemp -d -t vtfc)            # creates tmp working directory 'vtfc.<procid>' in system tmp folder
 [[ $DEBUG ]] && echo -e "DEBUG: scratch directory: $scratch\n"
 
 # Performs the action selected
 $ACTION $@
+
+# check if the config file containing the API key exists in user home directory
+if [[ -f "$configFile" ]]; then
+    . $configFile                       # load config
+
+    # check VT_APIKEY exists
+    if [[ -z "$VT_APIKEY" ]]; then
+        echo -e "\n $RED Please set the API KEY using the '-a' option $RESET\n"
+        usage 
+        exit 2
+    fi
+else
+    echo -e "\n$RED Config File '$configFile' not found!$RESET\n Please set API KEY using the '-a' option\n"
+    usage
+    exit 2
+fi
 
 # make things more readable moving forward
 URL="$APIURL/$fileHash"
