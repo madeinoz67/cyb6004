@@ -52,20 +52,26 @@ This script uses the bats test framework https://github.com/bats-core/bats-core/
 bats needs to be installed to perform the tests see https://github.com/bats-core/bats-core/blob/v1.2.0/README.md#installation
 
 #### Running the tests ####
-````
-  cd tests
-  bats test_vtfc.bats
 
+by running the 'runtests.sh' will execute all tests in the *tests* folder
+
+````
+  ./runtests.sh
+  
+ ✓ tests dependency - curl is installed
+ ✓ tests dependency - jq is installed
  ✓ invoke script with no parameters
  ✓ invoke script with no filename
  ✓ invoke script with filename only
  ✓ invoke add apikey with no key
  ✓ md5 search of eicar.com testfile
+ ✓ md5 search of eicar.com testfile - verbose result
  ✓ md5 search of non-malicious file
  ✓ sha1 search of eicar.com testfile
+ ✓ sha1 search of eicar.com testfile - verbose result
  ✓ sha1 search of non-malicious file
 
-8 tests, 0 failures
+12 tests, 0 failures
 ````
 
 ### Debugging ###

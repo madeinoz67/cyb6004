@@ -71,19 +71,6 @@ usage() {
     echo -e "\t$0 [-d] [-v] -m FILENAME \t\t Check file on virus total using MD5 hash ([-v] verbose results [-d] show debug)\n"
 }
 
-# sets the variable based on parameters passed
-#   Getopts—From the Shell Scripting Tutorial Tips. (n.d.). Retrieved 19 June 2020, from https://www.shellscript.sh/tips/getopts/
-set_variable() {
-    local varname=$1
-    shift
-    if [ -z "${!varname}" ]; then
-        eval "$varname=\$@\""
-    else
-        echo "Error: $varname already set"
-        usage
-    fi
-}
-
 # Performs the search on Virus Total
 doSearch() {
     local url=$1
