@@ -4,8 +4,8 @@
 #  examples of grep using regex search
 
 # find all sed statements
-
 grep -r sed .
+
 # find all lines starting with 'm'
 grep -r "^m" .
 
